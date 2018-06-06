@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+</h:head>
+<h:body>
+<h2>App de saludo</h2>
+<h3>Saludando</h3>
+<h:form id="form1">
+<p:inputText value="#{obj.nombre}" required="true" requiredMessage="debes dar un nombre"/>
+<p>
+ <h:commandButton value="Go Fr" action="#{obj.doSomeThing('fr')}" actionListener="#{obj.doListener}" />
+ <h:commandButton value="Go Es" action="#{obj.doSomeThing('es')}" actionListener="#{obj.doListener}" />
+ <h:commandButton value="Go En" action="#{obj.doSomeThing('en')}" actionListener="#{obj.doListener}" />
+</p>
+<p>
+</p>
+<h:outputText value="#{obj.respuesta}" />
+<p:growl id="messages" sticky="true" autoUpdate="true"/>
+</h:form>
+<h:form id="f2">
+ <h:commandButton value="Mostrar todos" action="#{obj.doMostrar}"  />
+ <h:form id="f1" rendered="#{obj.deboMostrar}">
+  <p:dataTable var="uno" value="#{obj.todos}">
+    <p:column headerText="Nombre">
+        <h:outputText value="#{uno.nom}" />
+    </p:column>
+    <p:column headerText="Language">
+        <h:outputText value="#{uno.lang}" />
+    </p:column>
+    <!--Botón de editar-->
+    <p:column headerText="">
+        <h:commandButton value="Editar"/>
+    </p:column>
+  </p:dataTable>
+  <p:growl id="messages1" sticky="true" autoUpdate="true"/>
+ </h:form>
+</h:form>
+</h:body>
+</html>
